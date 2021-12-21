@@ -24,6 +24,7 @@ typedef struct s_img
 	void	*player;
 	void	*background;
 	void	*collectable_item;
+	void	*exit;
 }	t_img;
 
 typedef struct s_map
@@ -46,5 +47,6 @@ typedef struct s_check
 void	so_long(char *filename);
 void	parsing_map(t_map *map, char *filename);
 void	valid_map(t_map *map);
+void	init_img(t_mlx *mlx, t_img *img);
 
 #endif //SO_LONG_SO_LONG_H

@@ -1,10 +1,5 @@
 #include "so_long.h"
 
-static void	init_img(t_mlx *mlx, t_img *img)
-{
-	//in processing
-}
-
 void	so_long(char *filename)
 {
 	t_mlx	mlx;
@@ -18,7 +13,7 @@ void	so_long(char *filename)
 	x = map.width;
 	y = map.height;
 	mlx.win = mlx_new_window(mlx.mlx_ptr, x * 72, y * 72, "so_long");
-	//init_img(&mlx, &img);
+	init_img(&mlx, &img);
 	mlx_loop(mlx.mlx_ptr);
 }
 
