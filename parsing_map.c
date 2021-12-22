@@ -92,6 +92,7 @@ void	parsing_map(t_map *map, char *filename)
 		map->map[i][j] = '\0';
 		free(line);
 		line = get_next_line(fd);
+
 	}
 	valid_map(map);
 }
