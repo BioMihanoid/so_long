@@ -1,8 +1,8 @@
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void program_exit(void)
 {
-	printf("Program exit!\n");
+	write(1, "Program exit!\n", 14);
 	exit(0);
 }
 
@@ -11,7 +11,6 @@ void	so_long(char *filename)
 	t_mlx	mlx;
 	t_img	img;
 	t_map	map;
-	void	*img_ptr;
 	int 	x;
 	int		y;
 
@@ -24,6 +23,7 @@ void	so_long(char *filename)
 	map.mlx = mlx;
 	init_img(&mlx, &img);
 	map.img = img;
+	map.count_move = 0;
 	paint_map(&mlx, &map, &img);
 	mlx_hook(mlx.win, KEY, 0, (int (*)()) &handler_key_event, &map);
 	mlx_hook(mlx.win, KEY_EXIT, 0, (int (*)()) &program_exit, NULL);

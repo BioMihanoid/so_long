@@ -6,11 +6,11 @@ INCLUDE = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-SRC = *.c
+SRC = src/*.c
 
-HEADER = so_long.h
+HEADER = includes/so_long.h
 
-OBJ = $(SRC:%.c=%.o)
+OBJ = $(SRC:src/%.c=%.o)
 
 all: $(NAME)
 
@@ -18,7 +18,7 @@ $(NAME): $(OBJ)
 	@gcc $(FLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
 
 $(OBJ): $(SRC)
-	@gcc $(FALGS) -c $(SRC)
+	@gcc $(FLAGS) -c $(SRC)
 
 clean:
 		 @rm -rf $(OBJ)

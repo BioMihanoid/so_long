@@ -1,16 +1,13 @@
-//
-// Created by Gormon Milan on 12/21/21.
-//
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-#ifndef SO_LONG_SO_LONG_H
-# define SO_LONG_SO_LONG_H
-
-# include "mlx_opengl/mlx.h"
+# include "../mlx_opengl/mlx.h"
 # include "get_next_line.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
 
 # define KEY_EXIT 17
 # define KEY 2
@@ -47,6 +44,7 @@ typedef struct s_map
 	int	empty_cell;
 	int	position_player_x;
 	int position_player_y;
+	int count_move;
 	char **map;
 }	t_map;
 
@@ -72,5 +70,6 @@ void	valid_map(t_map *map);
 void	init_img(t_mlx *mlx, t_img *img);
 void	paint_map(t_mlx *mlx, t_map *map, t_img *img);
 void	handler_key_event(int key_code, t_map *map);
+char	*ft_itoa(int n);
 
-#endif //SO_LONG_SO_LONG_H
+#endif

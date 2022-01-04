@@ -1,5 +1,4 @@
-#include "so_long.h"
-int a = 0;
+#include "../includes/so_long.h"
 
 static void	paint_img(t_mlx *mlx, t_img *img, char c, int x, int y)
 {

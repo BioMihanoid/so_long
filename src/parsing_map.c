@@ -1,8 +1,8 @@
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 static void	map_error(void)
 {
-	printf("Error! Invalid Map!\n");
+	write(1, "Error! Invalid Map!\n", 20);
 	exit(1);
 }
 
