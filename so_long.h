@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gmilan <gmilan@.42.fr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/24 15:22:00 by gmilan            #+#    #+#             */
+/*   Updated: 2022/01/11 17:18:16 by gmilan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../mlx_opengl/mlx.h"
+# include "mlx_opengl/mlx.h"
 # include "get_next_line.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -39,13 +51,15 @@ typedef struct s_map
 {
 	struct s_mlx	mlx;
 	struct s_img	img;
-	int	width;
-	int	height;
-	int	empty_cell;
-	int	position_player_x;
-	int position_player_y;
-	int count_move;
-	char **map;
+	int				width;
+	int				height;
+	int				empty_cell;
+	int				player_x;
+	int				player_y;
+	int				count_move;
+	char			**map;
+	int				x;
+	int				y;
 }	t_map;
 
 typedef struct s_check

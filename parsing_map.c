@@ -1,4 +1,16 @@
-#include "../includes/so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gmilan <gmilan@.42.fr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/24 15:22:00 by gmilan            #+#    #+#             */
+/*   Updated: 2022/01/11 17:15:39 by gmilan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
 
 static void	map_error(void)
 {
@@ -18,14 +30,15 @@ static int	ft_strcmp(char *s1, char *s2)
 	return (*s1 - *s2);
 }
 
-static void check_error(int fd, int size1, int size2)
+static void	check_error(int fd, int size1, int size2)
 {
 	char	*line;
+
 	if ((size1 - size2) == 1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			return;
+			return ;
 		else
 		{
 			free(line);
@@ -52,7 +65,7 @@ static int	check_map(char *filename, t_map *map)
 	while (1)
 	{
 		if (line == NULL)
-			break;
+			break ;
 		if (size == 0)
 			size = ft_strlen(line);
 		if (size != ft_strlen(line))
@@ -74,17 +87,15 @@ void	parsing_map(t_map *map, char *filename)
 
 	map->width = check_map(filename, map);
 	fd = open (filename, O_RDONLY);
-	if (fd < 0)
-		map_error();
 	map->map = (char **)malloc(sizeof(char *) * map->height);
-	if (map->map == NULL)
+	if (fd < 0 || map->map == NULL)
 		map_error();
 	i = -1;
 	line = get_next_line(fd);
 	while (1)
 	{
 		if (line == NULL)
-			break;
+			break ;
 		j = -1;
 		map->map[++i] = malloc (map->width + 1);
 		while (++j < map->width)
@@ -92,8 +103,6 @@ void	parsing_map(t_map *map, char *filename)
 		map->map[i][j] = '\0';
 		free(line);
 		line = get_next_line(fd);
-
 	}
 	valid_map(map);
 }
-

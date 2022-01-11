@@ -1,30 +1,39 @@
 NAME = so_long
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -MD
 
 INCLUDE = -lmlx -framework OpenGL -framework AppKit
 
 CC = gcc
 
-SRC = src/*.c
+SRC = filler_map.c				\
+	  ft_itoa.c					\
+	  get_next_line.c			\
+	  get_next_line_utils.c		\
+	  handler_key_event.c		\
+	  init_img.c				\
+	  main.c					\
+	  parsing_map.c				\
+	  so_long.c					\
+	  valid_map.c
 
-HEADER = includes/so_long.h
+HEADER = so_long.h
 
-OBJ = $(SRC:src/%.c=%.o)
+OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(FLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
+	gcc $(FLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
 
 $(OBJ): $(SRC)
-	@gcc $(FLAGS) -c $(SRC)
+	gcc $(FLAGS) -c $(SRC)
 
 clean:
-		 @rm -rf $(OBJ)
+		 @rm -rf $(OBJ) *.d
 
 fclean:	 clean
-		 @rm -rf $(NAME)
+		 @rm -rf $(NAME) *.d
 
 re:		 fclean all
 

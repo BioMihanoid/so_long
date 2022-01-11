@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmilan <gmilan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmilan <gmilan@.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/11 21:31:36 by gmilan            #+#    #+#             */
-/*   Updated: 2021/10/14 19:26:31 by                  ###   ########.fr       */
+/*   Created: 2021/12/24 15:22:00 by gmilan            #+#    #+#             */
+/*   Updated: 2022/01/11 17:15:39 by gmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 char	*ft_read_static_str(int fd, char *sstr)
 {

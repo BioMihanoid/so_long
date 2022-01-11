@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: gmilan <gmilan@.42.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 10:31:04 by                   #+#    #+#             */
-/*   Updated: 2021/10/25 13:25:42 by                  ###   ########.fr       */
+/*   Created: 2021/12/24 15:22:00 by gmilan            #+#    #+#             */
+/*   Updated: 2022/01/11 17:15:39 by gmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 int	ft_strlen(const char *s)
 {
@@ -26,8 +26,8 @@ int	ft_strlen(const char *s)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*str;
 
 	if (!s2)
