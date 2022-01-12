@@ -2,7 +2,7 @@ NAME = so_long
 
 FLAGS = -Wall -Wextra -Werror -MD
 
-INCLUDE = -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -lz
 
 CC = gcc
 
@@ -24,16 +24,16 @@ OBJ = $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(FLAGS) $(OBJ) $(INCLUDE) -o $(NAME)
+	gcc $(SRC) $(MLXFLAGS) $(FLAGS) -o $(NAME)
 
-$(OBJ): $(SRC)
-	gcc $(FLAGS) -c $(SRC)
+%o:	%.c
+	gcc $(FLAGS) -Imlx -c &< -o $@
 
 clean:
-		 @rm -rf $(OBJ) *.d
+		 rm -rf $(OBJ) *.d
 
 fclean:	 clean
-		 @rm -rf $(NAME) *.d
+		 rm -rf $(NAME) *.d
 
 re:		 fclean all
 
