@@ -45,6 +45,16 @@ typedef struct s_img
 	void	*player;
 	void	*collectable_item;
 	void	*exit;
+	void	*exit_not_open;
+	void	*exit_open;
+	void	*wall_down;
+	void	*wall_up;
+	void	*wall_right;
+	void	*wall_left;
+	void	*wall_up_left;
+	void	*wall_down_left;
+	void	*wall_up_right;
+	void	*wall_down_right;
 }	t_img;
 
 typedef struct s_map
@@ -60,6 +70,7 @@ typedef struct s_map
 	char			**map;
 	int				x;
 	int				y;
+	int 			count_collectable;
 }	t_map;
 
 typedef struct s_check

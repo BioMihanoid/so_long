@@ -18,6 +18,22 @@ void	program_exit(void)
 	exit(0);
 }
 
+void	counter_item(t_map *map)
+{
+	map->x = -1;
+	while (map->x < map->height)
+	{
+		map->y = -1;
+		while (map->y < map->width)
+		{
+			if (map->map[map->x][map->y] == 'C')
+				map->count_collectable++;
+			map->y++;
+		}
+		map->x++;
+	}
+}
+
 void	so_long(char *filename)
 {
 	t_mlx	mlx;
@@ -27,6 +43,8 @@ void	so_long(char *filename)
 	int		y;
 
 	parsing_map(&map, filename);
+	map.count_collectable = 0;
+	counter_item(&map);
 	mlx.mlx_ptr = mlx_init();
 	x = map.width;
 	y = map.height;

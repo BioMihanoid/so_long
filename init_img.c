@@ -32,7 +32,17 @@ static void	*init_img_utils(t_mlx *mlx, char *filename)
 void	init_img(t_mlx *mlx, t_img *img)
 {
 	img->player = init_img_utils(mlx, "images/player.xpm");
-	img->wall = init_img_utils(mlx, "images/wall.xpm");
-	img->exit = init_img_utils(mlx, "images/exit.xpm");
+	img->wall = init_img_utils(mlx, "images/wall2.xpm");
+	img->exit_not_open = init_img_utils(mlx, "images/door1.xpm");
+	img->exit_open = init_img_utils(mlx, "images/door2.xpm");
 	img->collectable_item = init_img_utils(mlx, "images/item.xpm");
+	img->exit = img->exit_not_open;
+	img->wall_up = init_img_utils(mlx, "images/wall_up.xpm");
+	img->wall_down = init_img_utils(mlx, "images/wall_down.xpm");
+	img->wall_right = init_img_utils(mlx, "images/wall_right.xpm");
+	img->wall_left = init_img_utils(mlx, "images/wall_left.xpm");
+	img->wall_up_left = init_img_utils(mlx, "images/wall_left_up.xpm");
+	img->wall_down_left = init_img_utils(mlx, "images/wall_left_down.xpm");
+	img->wall_up_right = init_img_utils(mlx, "images/wall_right_up.xpm");
+	img->wall_down_right = init_img_utils(mlx, "images/wall_right_down.xpm");
 }

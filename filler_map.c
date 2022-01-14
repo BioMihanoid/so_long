@@ -26,12 +26,43 @@ void	paint_background(t_mlx *mlx, int width, int height)
 		j = 0;
 		while (j < width)
 		{
-			b.data[i * width + j] = 0x000000;
+			b.data[i * width + j] = 0x05ccff;
 			j++;
 		}
 		i++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, b.img_ptr, 0, 0);
+}
+
+void	print_wall(t_mlx *mlx, t_map *map, t_img *img)
+{
+	if (map->x == 0 && map->y == 0)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_up_left, map->y * 72, map->x * 72);
+	else if (map->x == 0 && map->y > 0 && map->y < map->width - 2)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_up, map->y * 72, map->x * 72);
+	else if (map->x == 0 && map->y == map->width - 2)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_up_right, map->y * 72, map->x * 72);
+	else if (map->x > 0 && map->x < map->height - 1 && map->y == 0)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_left, map->y * 72, map->x * 72);
+	else if (map->x > 0 && map->x < map->height - 1 && map->y == map->width - 2)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_right, map->y * 72, map->x * 72);
+	else if (map->x == map->height - 1 && map->y == 0)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_down_left, map->y * 72, map->x * 72);
+	else if (map->x == map->height - 1 && map->y == map->width - 2)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_down_right, map->y * 72, map->x * 72);
+	else if (map->x == map->height - 1 && map->y > 0 && map->y < map->width - 1)
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall_down, map->y * 72, map->x * 72);
+	else
+		mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
+								img->wall, map->y * 72, map->x * 72);
 }
 
 void	paint_map(t_mlx *mlx, t_map *map, t_img *img)
@@ -44,8 +75,7 @@ void	paint_map(t_mlx *mlx, t_map *map, t_img *img)
 		while (++map->y < map->width)
 		{
 			if (map->map[map->x][map->y] == '1')
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
-					img->wall, map->y * 72, map->x * 72);
+				print_wall(mlx, map, img);
 			if (map->map[map->x][map->y] == 'P')
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win,
 					img->player, map->y * 72, map->x * 72);

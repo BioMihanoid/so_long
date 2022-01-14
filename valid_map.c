@@ -69,6 +69,6 @@ void	valid_map(t_map *map)
 			player_place(map, i, j, map->map[i][j]);
 		}
 	}
-	if (check.exit == 0 || check.collect == 0)
+	if (check.exit == 0 || check.collect == 0 || check.player == 0)
 		map_error();
 }

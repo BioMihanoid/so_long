@@ -12,22 +12,6 @@
 
 #include "so_long.h"
 
-static int	checker_items(t_map *map)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < map->height)
-	{
-		j = -1;
-		while (++j < map->width)
-			if (map->map[i][j] == 'C')
-				return (0);
-	}
-	return (1);
-}
-
 static void	print_count_move(t_map *map)
 {
 	char	*str;
@@ -45,13 +29,18 @@ static void	change_player_location(t_map *map, int x, int y)
 	{
 		if (map->map[x][y] == 'E')
 		{
-			if (checker_items(map))
+			if (map->count_collectable == 0)
 				exit(0);
 		}
 		else if (map->map[x][y] != '1')
 		{
 			if (map->map[x][y] == 'C')
+			{
 				map->map[x][y] = '0';
+				map->count_collectable--;
+				if (map->count_collectable == 0)
+					map->img.exit = map->img.exit_open;
+			}
 			map->map[map->player_x][map->player_y] = '0';
 			map->map[x][y] = 'P';
 			map->player_y = y;
