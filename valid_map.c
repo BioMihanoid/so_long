@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	map_error(void)
+void	map_error(void)
 {
 	write(1, "Error! Invalid Map!\n", 20);
 	exit(1);
@@ -20,7 +20,7 @@ static void	map_error(void)
 
 static void	check_char(t_check *check, char c)
 {
-	if (c != 'P' && c != 'C' && c != 'E' && c != '1')
+	if (c != 'P' && c != 'C' && c != 'E' && c != '1' && c != 'A')
 		map_error();
 	if (c == 'P')
 	{
@@ -42,8 +42,6 @@ void	player_place(t_map *map, int x, int y, char c)
 		map->player_x = x;
 		map->player_y = y;
 	}
-	if (c == '0')
-		map->empty_cell++;
 }
 
 void	valid_map(t_map *map)
@@ -54,7 +52,6 @@ void	valid_map(t_map *map)
 
 	i = -1;
 	check = (t_check){0, 0, 0};
-	map->empty_cell = 0;
 	while (++i < map->height)
 	{
 		j = -1;

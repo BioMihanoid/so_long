@@ -12,12 +12,6 @@
 
 #include "so_long.h"
 
-static void	map_error(void)
-{
-	write(1, "Error! Invalid Map!\n", 20);
-	exit(1);
-}
-
 static int	ft_strcmp(char *s1, char *s2)
 {
 	while (*s1 && *s2)
@@ -78,18 +72,12 @@ static int	check_map(char *filename, t_map *map)
 	return (size);
 }
 
-void	parsing_map(t_map *map, char *filename)
+void	parsing_help_function(t_map *map, int fd)
 {
 	int		i;
 	int		j;
-	int		fd;
 	char	*line;
 
-	map->width = check_map(filename, map);
-	fd = open (filename, O_RDONLY);
-	map->map = (char **)malloc(sizeof(char *) * map->height);
-	if (fd < 0 || map->map == NULL)
-		map_error();
 	i = -1;
 	line = get_next_line(fd);
 	while (1)
@@ -98,11 +86,25 @@ void	parsing_map(t_map *map, char *filename)
 			break ;
 		j = -1;
 		map->map[++i] = malloc (map->width + 1);
+		if (map->map[i] == NULL)
+			map_error();
 		while (++j < map->width)
 			map->map[i][j] = line[j];
 		map->map[i][j] = '\0';
 		free(line);
 		line = get_next_line(fd);
 	}
+}
+
+void	parsing_map(t_map *map, char *filename)
+{
+	int		fd;
+
+	map->width = check_map(filename, map);
+	fd = open (filename, O_RDONLY);
+	map->map = (char **)malloc(sizeof(char *) * map->height);
+	if (fd < 0 || map->map == NULL)
+		map_error();
+	parsing_help_function(map, fd);
 	valid_map(map);
 }

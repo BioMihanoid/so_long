@@ -31,7 +31,7 @@ static void	*init_img_utils(t_mlx *mlx, char *filename)
 
 void	init_img(t_mlx *mlx, t_img *img)
 {
-	img->player = init_img_utils(mlx, "images/player.xpm");
+	img->player = init_img_utils(mlx, "images/player1.xpm");
 	img->wall = init_img_utils(mlx, "images/wall2.xpm");
 	img->exit_not_open = init_img_utils(mlx, "images/door1.xpm");
 	img->exit_open = init_img_utils(mlx, "images/door2.xpm");
@@ -45,4 +45,7 @@ void	init_img(t_mlx *mlx, t_img *img)
 	img->wall_down_left = init_img_utils(mlx, "images/wall_left_down.xpm");
 	img->wall_up_right = init_img_utils(mlx, "images/wall_right_up.xpm");
 	img->wall_down_right = init_img_utils(mlx, "images/wall_right_down.xpm");
+	img->player_mirror = init_img_utils(mlx, "images/player_mirror.xpm");
+	img->player_not_mirror = img->player;
+	img->bomb = init_img_utils(mlx, "images/bomb.xpm");
 }

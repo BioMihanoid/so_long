@@ -55,22 +55,31 @@ typedef struct s_img
 	void	*wall_down_left;
 	void	*wall_up_right;
 	void	*wall_down_right;
+	void	*player_not_mirror;
+	void	*player_mirror;
+	void	*bomb;
 }	t_img;
+
+typedef struct s_move
+{
+	int	x;
+	int	y;
+}	t_move;
 
 typedef struct s_map
 {
 	struct s_mlx	mlx;
 	struct s_img	img;
+	struct s_move	move;
 	int				width;
 	int				height;
-	int				empty_cell;
 	int				player_x;
 	int				player_y;
 	int				count_move;
 	char			**map;
 	int				x;
 	int				y;
-	int 			count_collectable;
+	int				count_collectable;
 }	t_map;
 
 typedef struct s_check
@@ -93,8 +102,9 @@ void	so_long(char *filename);
 void	parsing_map(t_map *map, char *filename);
 void	valid_map(t_map *map);
 void	init_img(t_mlx *mlx, t_img *img);
-void	paint_map(t_mlx *mlx, t_map *map, t_img *img);
+void	paint_map(t_mlx *mlx, t_map *map, t_img *img, t_move *move);
 void	handler_key_event(int key_code, t_map *map);
 char	*ft_itoa(int n);
+void	map_error(void);
 
 #endif

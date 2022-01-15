@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	program_exit(void)
+int	program_exit(void)
 {
 	write(1, "Program exit!\n", 14);
 	exit(0);
@@ -20,17 +20,14 @@ void	program_exit(void)
 
 void	counter_item(t_map *map)
 {
+	map->count_collectable = 0;
 	map->x = -1;
-	while (map->x < map->height)
+	while (++map->x < map->height)
 	{
 		map->y = -1;
-		while (map->y < map->width)
-		{
+		while (++map->y < map->width)
 			if (map->map[map->x][map->y] == 'C')
 				map->count_collectable++;
-			map->y++;
-		}
-		map->x++;
 	}
 }
 
@@ -43,7 +40,6 @@ void	so_long(char *filename)
 	int		y;
 
 	parsing_map(&map, filename);
-	map.count_collectable = 0;
 	counter_item(&map);
 	mlx.mlx_ptr = mlx_init();
 	x = map.width;
@@ -53,9 +49,11 @@ void	so_long(char *filename)
 	init_img(&mlx, &img);
 	map.img = img;
 	map.count_move = 0;
-	paint_map(&mlx, &map, &img);
+	map.move.x = 72;
+	map.move.y = 72;
+	paint_map(&mlx, &map, &img, &map.move);
 	mlx_hook(mlx.win, KEY, 0, (int (*)()) & handler_key_event, &map);
-	mlx_hook(mlx.win, KEY_EXIT, 0, (int (*)()) & program_exit, NULL);
+	mlx_hook(mlx.win, KEY_EXIT, 0, program_exit, NULL);
 	mlx_loop(mlx.mlx_ptr);
 	mlx_clear_window(mlx.mlx_ptr, mlx.win);
 }
