@@ -1,10 +1,31 @@
-# so_long
+_This is a **21 School/Ecole 42** Project_
 
-The idea is to create a 2D game with the help of the minilibX and X11 graphic server. The player has to collect the "collectibles" before he can leave the map through the exit(s). The map is a file ".ber" loaded as an argument of the executable. The number of moves are counted and the goal is to join the exit with the minimum number of moves.
+# so_long
+And thanks for all the fish!
+
+## Description
+This project is a very small 2D game.
+Its purpose is to make work with textures, sprites,
+and some other very basic gameplay elements.
+
+## Project goals
+
+1. Learn minilibx
+2. Understand how simple 2D games are written
+
+## How to compile/to run
+
+You open console in Linux/MacOS and enter the following commands:
+```
+git clone https://github.com/BioMihanoid/so_long
+cd so_long
+make
+./so_long map
+```
+
+The card is served in the format .ber. Examples of maps, both correct and not, can be viewed in the maps folder
 
 ![image](https://user-images.githubusercontent.com/78046953/147125549-688be002-6de6-4a67-a4ee-491d2723966d.png)
 
-# Steps to run the game (MAC OS)
 
-![image](https://user-images.githubusercontent.com/78046953/147126001-c3189362-3792-49c3-ade4-d7008eb550ba.png)
 
